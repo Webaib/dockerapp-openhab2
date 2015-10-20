@@ -23,8 +23,8 @@ RUN chmod +x /etc/my_init.d/firstrun.sh
 # RUN chmod +x /opt/openhab/start.sh
 
 # Custom Config
-ADD files/openhab.cfg /opt/openhab/configurations/openhab.cfg
-RUN chmod +x /opt/openhab/configurations/openhab.cfg
+#ADD files/openhab.cfg /opt/openhab/configurations/openhab.cfg
+#RUN chmod +x /opt/openhab/configurations/openhab.cfg
 
 VOLUME /config
 
