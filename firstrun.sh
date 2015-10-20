@@ -1,14 +1,14 @@
 #!/bin/bash
 if [ ! -d /config/addons ]; then
 	echo '******MOVING**********'
-	mv /opt/openhab/addons /config/
-	mv /opt/openhab/webapps /config/
-	mv /opt/openhab/configurations /config/
+	mv /opt/openhab/conf /config/
+	#mv /opt/openhab/webapps /config/
+	#mv /opt/openhab/configurations /config/
 
 	echo '******LINKING**********'
-	ln -s /config/addons /opt/openhab/addons
-	ln -s /config/webapps /opt/openhab/webapps
-	ln -s /config/configurations /opt/openhab/configurations
+	ln -s /config/conf /opt/openhab/conf
+	#ln -s /config/webapps /opt/openhab/webapps
+	#ln -s /config/configurations /opt/openhab/configurations
 
 	chown -R openhab:openhab /config
 	chmod -R 777 /config
