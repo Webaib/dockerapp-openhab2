@@ -10,8 +10,8 @@ if [ ! -d /config/addons ]; then
 	ln -s /config/addons /opt/openhab/addons
 	#ln -s /config/configurations /opt/openhab/configurations
 
-	chown -R openhab:openhab /config
-	chmod -R 777 /config
+	chown -R openhab:openhab /config /config/addons /config/conf
+	chmod -R 777 /config /config/addons /config/conf
 fi
 
 # Remove any lock files
