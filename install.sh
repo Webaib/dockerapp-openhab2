@@ -28,28 +28,20 @@ wget -nv https://github.com/cdjackson/HABmin2/releases/download/0.0.15/org.openh
 
 # Main runtime
 unzip -q distribution-2.0.0-SNAPSHOT-runtime.zip -d /opt/openhab
+mkdir /opt/openhab/addons
 
 # Addons copy zwave jar across
 unzip -q distribution-1.8.0-SNAPSHOT-addons.zip -d /downloads/addons/
-cp -rp addons/org.openhab.binding.zwave-1.8.0-SNAPSHOT.jar /opt/openhab/conf/addons/
+cp -rp addons/org.openhab.binding.zwave-1.8.0-SNAPSHOT.jar /opt/openhab/addons/
 
 # HabMin jar
-cp -rp org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar /opt/openhab/conf/addons/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar
-
-# HabMin2 webapp
-#unzip -q HABmin2-0.0.15-release.zip -d /opt/openhab/webapps/habmin2
+cp -rp org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar /opt/openhab/addons/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar
 
 # Add user:group and chown
 adduser --system --no-create-home --group openhab
 usermod openhab -a -G dialout
 chown -R openhab:openhab /opt/openhab
-chmod +x /opt/openhab/conf/addons/*.jar
-
-# This is now handled by a custom config
-#cp -rp /opt/openhab/configurations/openhab_default.cfg /opt/openhab/configurations/openhab.cfg
-
-# Move startup as were using a custom one
-# mv /opt/openhab/start.sh /opt/openhab/start.sh.original
+chmod +x /opt/openhab/addons/*.jar
 
 # Add startup
 mkdir -p /etc/service/openhab
