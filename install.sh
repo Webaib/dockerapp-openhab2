@@ -9,6 +9,9 @@ chown -R nobody:users /home
 # chfn workaround - Known issue within Dockers
 ln -s -f /bin/true /usr/bin/chfn
 
+# Set Timezone
+echo 'Europe/London' > /etc/timezone
+
 # Install Java 7
 apt-get -q update
 apt-get purge -qy openjdk*
