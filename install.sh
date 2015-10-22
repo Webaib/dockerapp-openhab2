@@ -9,16 +9,19 @@ chown -R nobody:users /home
 # chfn workaround - Known issue within Dockers
 ln -s -f /bin/true /usr/bin/chfn
 
+# Update Apt-Get
+apt-get -q update
+
 # Set Timezone
+apt-get install -y ntp
+echo 'server 0.uk.pool.ntp.org' > /etc/ntp.conf
 echo 'Europe/London' > /etc/timezone
 
 # Install Java 7
-apt-get -q update
 apt-get purge -qy openjdk*
 apt-get install -y openjdk-7-jdk
 
 # Downloads Openhab and extras
-apt-get -q update
 apt-get install -qy wget unzip
 mkdir /downloads
 cd /downloads
