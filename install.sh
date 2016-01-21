@@ -27,20 +27,17 @@ mkdir /downloads
 cd /downloads
 
 
-wget -nv https://openhab.ci.cloudbees.com/job/openHAB2/lastSuccessfulBuild/artifact/distribution/target/distribution-2.0.0-SNAPSHOT-runtime.zip
-wget -nv https://openhab.ci.cloudbees.com/job/openHAB/lastSuccessfulBuild/artifact/distribution/target/distribution-1.8.0-SNAPSHOT-addons.zip
-wget -nv https://github.com/cdjackson/HABmin2/releases/download/0.0.15/HABmin2-0.0.15-release.zip
-wget -nv https://github.com/cdjackson/HABmin2/releases/download/0.0.15/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar
+wget -nv https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip
+wget -nv https://github.com/cdjackson/HABmin2/blob/master/output/HABmin2-0.0.15-release.zip?raw=true
+wget -nv https://github.com/cdjackson/HABmin2/blob/master/output/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar?raw=true
+
 
 # Main runtime
-unzip -q distribution-2.0.0-SNAPSHOT-runtime.zip -d /opt/openhab
-mkdir /opt/openhab/addons
+unzip -q openhab-online-2.0.0-SNAPSHOT.zip -d /opt/openhab
 
-# Addons copy zwave jar across
-unzip -q distribution-1.8.0-SNAPSHOT-addons.zip -d /downloads/addons/
-cp -rp addons/org.openhab.binding.zwave-1.8.0-SNAPSHOT.jar /opt/openhab/addons/
-
-# HabMin jar
+# HabMin
+mkdir -r /opt/openhab/webapps/habmin2
+unzip -q HABmin2-0.0.15-release.zip -d /opt/openhab/webapps/habmin2
 cp -rp org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar /opt/openhab/addons/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar
 
 # Add user:group and chown
