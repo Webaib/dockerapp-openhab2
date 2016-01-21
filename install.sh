@@ -10,7 +10,7 @@ chown -R nobody:users /home
 ln -s -f /bin/true /usr/bin/chfn
 
 # Update Apt-Get
-add-apt-repository ppa:webupd8team/java -y
+add-apt-repository ppa:openjdk-r/ppa -y
 apt-get -q update
 
 # Set Timezone
