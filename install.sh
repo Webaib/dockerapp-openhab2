@@ -58,7 +58,6 @@ umask 000
 exec /etc/init.d/openhab start
 EOT
 chmod +x /etc/service/openhab/run
-chmod +x /etc/init.d/openhab
 
 # Quick Cleanup
 rm /opt/openhab/*.bat 
