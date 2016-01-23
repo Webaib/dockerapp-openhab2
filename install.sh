@@ -48,8 +48,8 @@ chown -R openhab:openhab /opt/openhab
 chmod +x /opt/openhab/addons/*.jar
 
 # Add startup
-ln -s /opt/openhab/runtime/karaf/bin/openHAB-service /etc/init.d/
-#systemctl enable /opt/openhab/runtime/karaf/bin/openHAB.service
+# ln -s /opt/openhab/runtime/karaf/bin/openHAB-service /etc/init.d/
+# systemctl enable /opt/openhab/runtime/karaf/bin/openHAB.service
 
 MKDIR -p /etc/service/openhab
 cat <<'EOT' > /etc/service/openhab/run
