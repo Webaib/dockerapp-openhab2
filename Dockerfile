@@ -14,6 +14,10 @@ RUN bash /install.sh
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
 RUN chmod +x /etc/my_init.d/firstrun.sh
 
+# ADD INIT
+ADD initscript /etc/init.d/openhab
+RUN chmod +x /etc/init.d/openhab
+
 VOLUME /config
 
 EXPOSE 8080 8443 5555 9001
