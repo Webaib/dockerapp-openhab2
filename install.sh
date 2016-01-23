@@ -39,7 +39,7 @@ unzip -q openhab-online-2.0.0-SNAPSHOT.zip -d /opt/openhab
 # HabMin
 #mkdir -r /opt/openhab/webapps/habmin2
 #unzip -q HABmin2-0.0.15-release.zip -d /opt/openhab/webapps/habmin2
-cp -rp org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar /opt/openhab/addons/
+cp -rp org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar?raw=true /opt/openhab/addons/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar
 
 # Add user:group and chown
 adduser --system --no-create-home --group openhab
@@ -55,9 +55,10 @@ MKDIR -p /etc/service/openhab
 cat <<'EOT' > /etc/service/openhab/run
 !/bin/bash
 umask 000
-exec /etc/init.d/openHAB-service start
+exec /etc/init.d/openhab start
 EOT
 chmod +x /etc/service/openhab/run
+chmod +x /etc/init.d/openhab
 
 # Quick Cleanup
 rm /opt/openhab/*.bat 
