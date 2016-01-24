@@ -27,18 +27,10 @@ apt-get install -qy wget unzip
 mkdir /downloads
 cd /downloads
 
-
 wget -nv https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip
-#wget -nv https://github.com/cdjackson/HABmin2/blob/master/output/HABmin2-0.0.15-release.zip?raw=true
-wget -nv https://github.com/cdjackson/HABmin2/blob/master/output/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar?raw=true
-
-
-# Main runtime
 unzip -q openhab-online-2.0.0-SNAPSHOT.zip -d /opt/openhab
 
-# HabMin
-#mkdir -r /opt/openhab/webapps/habmin2
-#unzip -q HABmin2-0.0.15-release.zip -d /opt/openhab/webapps/habmin2
+wget -nv https://github.com/cdjackson/HABmin2/blob/master/output/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar?raw=true
 cp -rp org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar?raw=true /opt/openhab/addons/org.openhab.ui.habmin_2.0.0.SNAPSHOT-0.0.15.jar
 
 # Add user:group and chown
@@ -48,16 +40,14 @@ chown -R openhab:openhab /opt/openhab
 chmod +x /opt/openhab/addons/*.jar
 
 # Add startup
-# ln -s /opt/openhab/runtime/karaf/bin/openHAB-service /etc/init.d/
-# systemctl enable /opt/openhab/runtime/karaf/bin/openHAB.service
-
-MKDIR -p /etc/service/openhab
+mkdir -p /etc/service/openhab
 cat <<'EOT' > /etc/service/openhab/run
 !/bin/bash
 umask 000
 exec /etc/init.d/openhab start
 EOT
 chmod +x /etc/service/openhab/run
+ln -s /opt/openhab/runtime/karaf/bin/openHAB-service /etc/init.d/openhab
 
 # Quick Cleanup
 rm /opt/openhab/*.bat 
