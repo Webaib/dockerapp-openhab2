@@ -39,6 +39,9 @@ then start with docker-compose up -d
 == Parameters
 
 -p 8080 - the port of the webinterface
+
 -v /openhab/conf - openhab configs
+
 -v /openhab/userdata - openhab userdata directory
+
 --device=/dev/ttyUSB0 - attach your devices like RFXCOM or Z-Wave Sticks to the conatiner
