@@ -1,0 +1,44 @@
+OpenHab2 Docker
+===============
+
+Repository for building docker containers for OpenHab2
+
+== Usage
+
+[source,shell]
+----
+docker run \
+        --name openhab \
+        --net=host \
+        -v /etc/timezone:/etc/timezone:ro \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v /opt/openhab/conf:/openhab/conf \
+        -v /opt/openhab/userdata:/openhab/userdata \
+        openhab/openhab
+----
+
+or with docker-compose.yml
+
+[source,yaml]
+----
+openhab:
+  image: 'openhab/openhab'
+  net: "host"
+  volumes:
+    - '/etc/timezone:/etc/timezone:ro'
+    - '/etc/localtime:/etc/localtime:ro'
+    - '/opt/openhab/conf:/openhab/conf'
+    - '/opt/openhab/userdata:/openhab/userdata'
+  devices:
+    - '/dev/ttyUSB0'
+----
+
+then start with docker-compose up -d
+
+
+== Parameters
+
+-p 8080 - the port of the webinterface
+-v /openhab/conf - openhab configs
+-v /openhab/userdata - openhab userdata directory
+--device=/dev/ttyUSB0 - attach your devices like RFXCOM or Z-Wave Sticks to the conatiner
